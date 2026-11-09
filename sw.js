@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pequenos-passos-v1';
+const CACHE_NAME = 'pequenos-passos-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
