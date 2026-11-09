@@ -1,0 +1,9 @@
+# Publica apenas a pasta "public" (docs, testes e SQL não vão para o site).
+[build]
+  publish = "public"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"

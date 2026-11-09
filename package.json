@@ -1,0 +1,13 @@
+{
+  "name": "pequenos-passos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Protótipo educativo para acompanhar crescimento, conquistas e memórias da criança (0 a 4 anos).",
+  "scripts": {
+    "test": "node tests/smoke.test.js",
+    "start": "npx serve public"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0"
+  }
+}
