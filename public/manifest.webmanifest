@@ -1,0 +1,27 @@
+{
+  "name": "Pequenos Passos",
+  "short_name": "Pequenos Passos",
+  "description": "Acompanhe crescimento, conquistas e memórias de crianças de 0 a 4 anos.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF9FE",
+  "theme_color": "#DCE7FF",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "health", "lifestyle"],
+  "lang": "pt-BR"
+}
