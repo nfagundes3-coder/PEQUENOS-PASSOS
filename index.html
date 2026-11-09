@@ -6,6 +6,10 @@
 <meta name="description" content="Pequenos Passos: acompanhando cada pequena conquista. Crescimento, memórias e orientações do Ministério da Saúde para crianças de 0 a 4 anos.">
 <link rel="icon" type="image/png" href="img/favicon-64.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Pequenos Passos">
 <style>
 @font-face{font-family:"Nunito";src:url(fonts/nunito-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
 @font-face{font-family:"Nunito Sans";src:url(fonts/nunito-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
@@ -331,4 +335,14 @@ if(e.target.id==='imp')f.text().then(async t=>{try{const o=JSON.parse(t);let n=0
 async function boot(){try{if(CFG.url&&CFG.key){await loadSb();SB=window.supabase.createClient(CFG.url,CFG.key);API=Cloud;SB.auth.onAuthStateChange(ev=>{if(ev==='PASSWORD_RECOVERY'){st.rec=1;U=null;render()}})}else API=Local;U=await API.session();if(U&&!st.rec)await afterLogin();else render()}catch(e){SB=null;API=Local;toast('Nuvem indisponível: modo demonstração');U=await API.session();if(U)await afterLogin();else render()}}
 boot();
 })();
-</script></body></html>
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch((err) => {
+      console.warn('SW registration failed:', err);
+    });
+  });
+}
+</script>
+</body></html>
