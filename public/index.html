@@ -128,7 +128,40 @@ body.ro [data-a=add],body.ro [data-a=del],body.ro [data-a=tg]{display:none}.auth
 .pf{flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #D0C0F6;background:linear-gradient(135deg,#FFFFFF 0%,#F5EEFD 100%);color:var(--lilac2);box-shadow:0 3px 10px rgba(132,108,235,.18);font:800 1.125rem var(--fh);cursor:pointer;transition:transform .15s}.pf:active{transform:scale(.94)}.pf[hidden]{display:none}
 .av{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 6px;border-radius:999px;border:1.5px solid #D0C0F6;background:linear-gradient(135deg,#FFFFFF 0%,#F8F3FE 100%);color:var(--ink);font:800 .875rem var(--fh);cursor:pointer;transition:all .15s}
 .av i{font-style:normal;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#EFE8FB,#E0D2F9);color:var(--ink)}.av[aria-pressed=true]{border-color:var(--purple);box-shadow:0 3px 10px rgba(132,108,235,.22);background:linear-gradient(135deg,#EDE2FB,#DFCFF9)}
+/* ── Splash Motion ── */
+#splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#E6EEFD 0%,#EFE4FC 33%,#F7E5F8 66%,#E7EFFE 100%);overflow:hidden;transition:opacity .5s ease,visibility .5s ease}
+#splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+#splash .sp-bg{position:absolute;inset:0;overflow:hidden}
+#splash .sp-orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:sp-float 6s ease-in-out infinite alternate}
+#splash .sp-orb:nth-child(1){width:280px;height:280px;background:radial-gradient(circle,#B8CCFA,#D5C0F8);top:-60px;left:-40px;animation-delay:0s}
+#splash .sp-orb:nth-child(2){width:220px;height:220px;background:radial-gradient(circle,#D9C4FA,#F0C8F0);bottom:-40px;right:-30px;animation-delay:1s}
+#splash .sp-orb:nth-child(3){width:180px;height:180px;background:radial-gradient(circle,#C8DBF8,#BEB0F4);top:40%;left:55%;animation-delay:2s}
+@keyframes sp-float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(20px,-30px) scale(1.15)}}
+#splash .sp-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:0 24px}
+#splash .sp-logo{width:120px;height:120px;border-radius:50%;box-shadow:0 12px 40px rgba(135,110,235,.25);border:5px solid rgba(255,255,255,.8);animation:sp-pop .7s cubic-bezier(.34,1.56,.64,1) both;background:#fff}
+#splash .sp-title{font:800 2rem/1.15 var(--fh);color:#2E2A54;opacity:0;animation:sp-fadeUp .6s ease .45s forwards}
+#splash .sp-sub{font:600 1rem/1.4 var(--fb);color:#5A5380;opacity:0;animation:sp-fadeUp .6s ease .7s forwards;max-width:280px}
+#splash .sp-steps{display:flex;gap:8px;margin-top:24px;opacity:0;animation:sp-fadeUp .5s ease .95s forwards}
+#splash .sp-dot{width:8px;height:8px;border-radius:50%;background:#C4B2F4;animation:sp-pulse 1.2s ease-in-out infinite}
+#splash .sp-dot:nth-child(2){animation-delay:.2s;background:#A8C6F8}
+#splash .sp-dot:nth-child(3){animation-delay:.4s;background:#E0B0E4}
+#splash .sp-foot{display:flex;align-items:center;gap:6px;margin-top:32px;opacity:0;animation:sp-fadeUp .5s ease 1.2s forwards}
+#splash .sp-foot svg{width:18px;height:18px;stroke:#846CEB;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#splash .sp-foot span{font:700 .8125rem var(--fh);color:#635D86}
+@keyframes sp-pop{0%{opacity:0;transform:scale(.3) rotate(-15deg)}60%{opacity:1;transform:scale(1.05) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
+@keyframes sp-fadeUp{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes sp-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.6);opacity:1}}
 </style></head><body>
+<div id="splash">
+  <div class="sp-bg"><div class="sp-orb"></div><div class="sp-orb"></div><div class="sp-orb"></div></div>
+  <div class="sp-content">
+    <img class="sp-logo" src="img/logo-320.webp" width="120" height="120" alt="">
+    <div class="sp-title">Pequenos Passos</div>
+    <div class="sp-sub">Acompanhando cada pequena conquista do seu bebê 💜</div>
+    <div class="sp-steps"><span class="sp-dot"></span><span class="sp-dot"></span><span class="sp-dot"></span></div>
+    <div class="sp-foot"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Protótipo educativo</span></div>
+  </div>
+</div>
 <header class="top"><div><div class="bn"><img class="lg" src="img/logo-96.webp" width="44" height="44" alt=""><div><h1 id="h1">Pequenos Passos</h1><small id="sub"></small></div></div><div class="tr"><a class="sosp" href="tel:192" aria-label="Emergência: ligar 192, SAMU">SOS 192</a><button class="pf" id="pf" data-a="pf" aria-label="Perfil e menu" hidden></button></div></div></header>
 <nav id="nav" aria-label="Menu principal" hidden></nav>
 <main id="app"></main><dialog id="dlg"></dialog><div id="ts" role="status" hidden></div>
@@ -391,6 +424,14 @@ document.addEventListener('change',e=>{const f=e.target.files&&e.target.files[0]
 if(e.target.id==='mf')shrink(f).then(d=>{pend=d;const p=$('mp');p.src=d;p.hidden=false}).catch(()=>{$('fe').textContent='Não consegui abrir essa foto. Tente JPG ou PNG.'});
 if(e.target.id==='imp')f.text().then(async t=>{try{const o=JSON.parse(t);let n=0;for(const k of KINDS)for(const r of (o.D&&o.D[k])||[]){const {id,...rest}=r;if(J(k).some(x=>{const {id:_,...y}=x;return JSON.stringify(y)===JSON.stringify(rest)}))continue;if(await addR(k,rest))n++}render(1);toast(n+' registros restaurados')}catch(x){toast('Arquivo inválido')}})});
 async function boot(){try{if(CFG.url&&CFG.key){await loadSb();SB=window.supabase.createClient(CFG.url,CFG.key);API=Cloud;SB.auth.onAuthStateChange(ev=>{if(ev==='PASSWORD_RECOVERY'){st.rec=1;U=null;render()}})}else API=Local;U=await API.session();if(U&&!st.rec)await afterLogin();else render()}catch(e){SB=null;API=Local;toast('Nuvem indisponível: modo demonstração');U=await API.session();if(U)await afterLogin();else render()}}
+/* splash dismiss */
+const _spEl=document.getElementById('splash');
+const _spSeen=g('splash_seen');
+if(_spSeen||!_spEl){if(_spEl)_spEl.remove()}
+else{s('splash_seen','1')}
+const _origRender=render;
+let _splashDone=false;
+render=function(go){_origRender(go);if(!_splashDone&&_spEl&&_spEl.parentNode){_splashDone=true;const delay=_spSeen?0:2400;setTimeout(()=>{_spEl.classList.add('hide');setTimeout(()=>_spEl.remove(),550)},delay)}};
 boot();
 })();
 </script>
